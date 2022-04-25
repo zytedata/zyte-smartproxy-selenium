@@ -1,6 +1,4 @@
 # Zyte SmartProxy Selenium
-[![made-with-javascript](https://img.shields.io/badge/Made%20with-JavaScript-1f425f.svg)](https://www.javascript.com)
-[![npm](https://img.shields.io/npm/v/zyte-smartproxy-playwright)](https://www.npmjs.com/package/zyte-smartproxy-playwright)
 
 Use [Selenium](https://www.selenium.dev/) and [Selenium Wire](https://github.com/wkeeling/selenium-wire) with
 [Smart Proxy Manager](https://www.zyte.com/smart-proxy-manager/) easily!

@@ -4,6 +4,7 @@ from seleniumwire.webdriver import Edge as _Edge
 from seleniumwire.webdriver import Firefox as _Firefox
 from seleniumwire.webdriver import Remote as _Remote
 from seleniumwire.webdriver import Safari as _Safari
+from zyte_smartproxy_selenium import __version__
 import inspect
 import re
 import requests
@@ -21,7 +22,7 @@ DEFAULT_HEADERS = {
     'X-Crawlera-Cookies': 'disable',
     'X-Crawlera-No-Bancheck': '1',
 }
-ZYTE_SMP_SELENIUM_VERSION = 'zyte-smartproxy-selenium/1.0.0'
+ZYTE_SMP_SELENIUM_VERSION = 'zyte-smartproxy-selenium/'+__version__
 
 
 class ZyteModifyRequestsMixin:

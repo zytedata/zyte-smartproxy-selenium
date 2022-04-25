@@ -1,8 +1,9 @@
 from setuptools import setup, find_packages
+from zyte_smartproxy_selenium import __version__
 
 setup(
     name='Zyte SmartProxy Selenium',
-    version='1.0.0',
+    version=__version__,
     packages=find_packages(),
     install_requires=[
         'adblockparser>=0.7',
