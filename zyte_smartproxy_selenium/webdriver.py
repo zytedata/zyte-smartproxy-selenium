@@ -98,6 +98,7 @@ class ZyteModifyRequestsMixin:
                 pass
 
         for key, value in self.spm_headers.items():
+            del request.headers[key]
             request.headers[key] = value
         request.headers['X-Crawlera-Session'] = self.spm_session_id
         request.headers['X-Crawlera-Client'] = ZYTE_SMP_SELENIUM_VERSION
