@@ -4,7 +4,19 @@ from seleniumwire.webdriver import Edge as _Edge
 from seleniumwire.webdriver import Firefox as _Firefox
 from seleniumwire.webdriver import Remote as _Remote
 from seleniumwire.webdriver import Safari as _Safari
+from seleniumwire.webdriver import ActionChains  # noqa
+from seleniumwire.webdriver import FirefoxOptions  # noqa
+from seleniumwire.webdriver import FirefoxProfile  # noqa
+from seleniumwire.webdriver import Proxy  # noqa
+from seleniumwire.webdriver import ChromeOptions, DesiredCapabilities  # noqa
 from zyte_smartproxy_selenium import __version__
+
+try:
+    # TouchActions does not exist in Selenium 4.1.1
+    from selenium.webdriver import TouchActions  # noqa
+except ImportError:
+    pass
+
 import inspect
 import re
 import requests
@@ -22,7 +34,7 @@ DEFAULT_HEADERS = {
     'X-Crawlera-Cookies': 'disable',
     'X-Crawlera-No-Bancheck': '1',
 }
-ZYTE_SMP_SELENIUM_VERSION = 'zyte-smartproxy-selenium/'+__version__
+ZYTE_SPM_SELENIUM_VERSION = 'zyte-smartproxy-selenium/'+__version__
 
 
 class ZyteModifyRequestsMixin:
@@ -101,7 +113,7 @@ class ZyteModifyRequestsMixin:
             del request.headers[key]
             request.headers[key] = value
         request.headers['X-Crawlera-Session'] = self.spm_session_id
-        request.headers['X-Crawlera-Client'] = ZYTE_SMP_SELENIUM_VERSION
+        request.headers['X-Crawlera-Client'] = ZYTE_SPM_SELENIUM_VERSION
 
     def zyte_response_interceptor(self, request, response):
         if response.headers.get('X-Crawlera-Error', '') == 'bad_session_id':
@@ -114,7 +126,7 @@ class ZyteModifyRequestsMixin:
         r = requests.post(
             f'{self.spm_host}/sessions',
             auth=(self.spm_apikey, ''),
-            headers={'X-Crawlera-Client': ZYTE_SMP_SELENIUM_VERSION}
+            headers={'X-Crawlera-Client': ZYTE_SPM_SELENIUM_VERSION}
         )
         return r.text
 
