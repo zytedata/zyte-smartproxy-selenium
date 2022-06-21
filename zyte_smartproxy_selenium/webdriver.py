@@ -23,7 +23,7 @@ import requests
 
 DEFAULT_SPM_HOST = 'http://proxy.zyte.com:8011'
 DEFAULT_STATIC_BYPASS = True
-DEFAULT_STATIC_BYPASS_REGEX = r'.*?\.(?:txt|json|css|less|js|mjs|cjs|gif|ico|jpe?g|svg|png|webp|mkv|mp4|mpe?g|webm|eot|ttf|woff2?)$'
+DEFAULT_STATIC_BYPASS_REGEX = r'.*?\.(?:txt|json|css|less|gif|ico|jpe?g|svg|png|webp|mkv|mp4|mpe?g|webm|eot|ttf|woff2?)$'
 DEFAULT_BLOCK_ADS = True
 DEFAULT_BLOCK_ADS_LISTS = [
     'https://easylist.to/easylist/easylist.txt',
