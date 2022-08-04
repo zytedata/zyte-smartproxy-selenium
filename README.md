@@ -56,3 +56,21 @@ Zyte SmartProxy Selenium extends Selenium Wire. You author your code in the same
 
 ### Notes
 Some websites may not work with `block_ads` and `static_bypass` enabled (default). Try to disable them if you encounter any issues.
+
+When using the `--headless` argument, values generated for some browser-specific headers are a bit different, which may be detected by websites. Try using ['X-Crawlera-Profile': 'desktop'](https://docs.zyte.com/smart-proxy-manager.html#x-crawlera-profile) in that case:
+``` python
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    browser = webdriver.Chrome(
+        chrome_options=options,
+        spm_options={
+            'spm_apikey': '<SPM_APIKEY>'
+            'headers': {
+                'X-Crawlera-No-Bancheck': '1',
+                'X-Crawlera-Profile': 'desktop',
+                'X-Crawlera-Cookies': 'disable',
+            }
+        }
+    )
+```
