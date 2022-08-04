@@ -17,7 +17,7 @@ If you get an error about not being able to build cryptography you may be runnin
 
 2. **Browser Setup**
 
-No specific configuration should be necessary except to ensure that you have downloaded the [ChromeDriver](https://sites.google.com/a/chromium.org/chromedriver/) and [GeckoDriver](https://github.com/mozilla/geckodriver/releases) for Chrome and Firefox to be remotely controlled, the same as if you were using Selenium directly. Once downloaded, these executables should be placed somewhere on your PATH.
+No specific configuration should be necessary except to ensure that you have downloaded the [ChromeDriver](https://sites.google.com/chromium.org/driver/) and [GeckoDriver](https://github.com/mozilla/geckodriver/releases) for Chrome and Firefox to be remotely controlled, the same as if you were using Selenium directly. Once downloaded, these executables should be placed somewhere on your PATH.
 
 3. **Create a file `sample.py` with the following content and replace `<SPM_APIKEY>` with your SPM Apikey**
 
