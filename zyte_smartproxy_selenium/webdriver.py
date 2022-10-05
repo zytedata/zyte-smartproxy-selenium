@@ -97,7 +97,11 @@ class ZyteModifyRequestsMixin:
         if self.block_ads and self.block_ads_rules.should_block(request.url):
             request.abort()
 
-        if self.static_bypass and self.static_bypass_regexobj.match(request.url):
+        if (
+            self.static_bypass and
+            request.method in ['GET', 'OPTIONS'] and
+            self.static_bypass_regexobj.match(request.url)
+        ):
             try:
                 r = requests.get(request.url, headers=request.headers)
                 if r.status_code == 200:
