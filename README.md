@@ -51,7 +51,7 @@ Zyte SmartProxy Selenium extends Selenium Wire. You author your code in the same
 | `static_bypass` | `True` | When `true` Zyte SmartProxy Selenium will skip proxy use for static assets defined by `static_bypass_regex` or pass `false` to use proxy. |
 | `static_bypass_regex` | `r'.*?\.(?:txt\|json\|css\|less\|gif\|ico\|jpe?g\|svg\|png\|webp\|mkv\|mp4\|mpe?g\|webm\|eot\|ttf\|woff2?)$'` | Regex to use filtering URLs for `static_bypass`. |
 | `block_ads` | `True` | When `true` Zyte SmartProxy Selenium will block ads defined by `block_ads_lists`. |
-| `block_ads_lists` | `['https://easylist.to/easylist/easylist.txt', 'https://easylist.to/easylist/easyprivacy.txt']` | [AdBlock lists](https://adblockplus.org/filter-cheatsheet) to be used by Zyte SmartProxy Selenium to block ads |
+| `block_ads_lists` | `['https://secure.fanboy.co.nz/easylist.txt', 'https://secure.fanboy.co.nz/easyprivacy.txt']` | [AdBlock lists](https://adblockplus.org/filter-cheatsheet) to be used by Zyte SmartProxy Selenium to block ads |
 | `headers` | `{'X-Crawlera-No-Bancheck': '1', 'X-Crawlera-Profile': 'pass', 'X-Crawlera-Cookies': 'disable'}` | List of headers to be appended to requests |
 
 ### Notes

@@ -26,8 +26,8 @@ DEFAULT_STATIC_BYPASS = True
 DEFAULT_STATIC_BYPASS_REGEX = r'.*?\.(?:txt|json|css|less|gif|ico|jpe?g|svg|png|webp|mkv|mp4|mpe?g|webm|eot|ttf|woff2?)$'
 DEFAULT_BLOCK_ADS = True
 DEFAULT_BLOCK_ADS_LISTS = [
-    'https://easylist.to/easylist/easylist.txt',
-    'https://easylist.to/easylist/easyprivacy.txt',
+    'https://secure.fanboy.co.nz/easylist.txt',
+    'https://secure.fanboy.co.nz/easyprivacy.txt',
 ]
 DEFAULT_HEADERS = {
     'X-Crawlera-Profile': 'pass',
