@@ -99,7 +99,6 @@ class ZyteModifyRequestsMixin:
 
         if (
             self.static_bypass and
-            request.method in ['GET', 'OPTIONS'] and
             self.static_bypass_regexobj.match(request.url)
         ):
             try:
