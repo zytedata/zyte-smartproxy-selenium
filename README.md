@@ -27,7 +27,7 @@ from zyte_smartproxy_selenium import webdriver
 browser = webdriver.Chrome(spm_options={'spm_apikey': '<SPM_APIKEY>'})
 browser.get('https://toscrape.com')
 browser.save_screenshot('screenshot.png')
-browser.close()
+browser.quit()
 ```
 
 Make sure that you're able to make `https` requests using Smart Proxy Manager by following this guide [Fetching HTTPS pages with Zyte Smart Proxy Manager](https://docs.zyte.com/smart-proxy-manager/next-steps/fetching-https-pages-with-smart-proxy.html)
