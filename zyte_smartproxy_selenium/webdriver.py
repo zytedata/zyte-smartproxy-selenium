@@ -24,6 +24,9 @@ import requests
 DEFAULT_SPM_HOST = 'http://proxy.zyte.com:8011'
 DEFAULT_STATIC_BYPASS = True
 DEFAULT_STATIC_BYPASS_REGEX = r'.*?\.(?:txt|json|css|less|gif|ico|jpe?g|svg|png|webp|mkv|mp4|mpe?g|webm|eot|ttf|woff2?)$'
+DEFAULT_STATIC_DOMAINS = True
+DEFAULT_STATIC_DOMAINS_LIST = []
+DEFAULT_STATIC_DOMAINS_BLOCK = False
 DEFAULT_BLOCK_ADS = True
 DEFAULT_BLOCK_ADS_LISTS = [
     'https://secure.fanboy.co.nz/easylist.txt',
@@ -75,6 +78,10 @@ class ZyteModifyRequestsMixin:
         static_bypass_regex = spm_options.get('static_bypass_regex', DEFAULT_STATIC_BYPASS_REGEX)
         self.static_bypass_regexobj = re.compile(static_bypass_regex)
 
+        self.static_domains = spm_options.get('static_domains', DEFAULT_STATIC_DOMAINS)
+        self.static_domains_list = spm_options.get('static_domains_list', DEFAULT_STATIC_DOMAINS_LIST)
+        self.static_domains_block = spm_options.get('static_domains_block', DEFAULT_STATIC_DOMAINS_BLOCK)
+
         self.block_ads = spm_options.get('block_ads', DEFAULT_BLOCK_ADS)
         block_ads_lists = spm_options.get('block_ads_lists', DEFAULT_BLOCK_ADS_LISTS)
         self.block_ads_rules = fetch_adblock_rules(block_ads_lists)
@@ -96,6 +103,26 @@ class ZyteModifyRequestsMixin:
 
         if self.block_ads and self.block_ads_rules.should_block(request.url):
             request.abort()
+
+        if self.static_domains_list > 0:
+
+            for _domain in self.static_domains_list:
+
+                if self.static_domains_block and (_domain in request.url):
+                    request.abort()
+
+                if self.static_domains and (_domain in request.url):
+
+                    try:
+                        r = requests.get(request.url, headers=request.headers)
+                        if r.status_code == 200:
+                            request.create_response(
+                                status_code=r.status_code,
+                                headers=r.headers.items(),
+                                body=r.content
+                            )
+                    except Exception:
+                        pass
 
         if (
             self.static_bypass and
