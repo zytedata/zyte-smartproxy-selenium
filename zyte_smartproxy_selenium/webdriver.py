@@ -104,7 +104,7 @@ class ZyteModifyRequestsMixin:
         if self.block_ads and self.block_ads_rules.should_block(request.url):
             request.abort()
 
-        if self.static_domains_list > 0:
+        if len(self.static_domains_list) > 0:
 
             for _domain in self.static_domains_list:
 
