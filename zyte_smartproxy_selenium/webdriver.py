@@ -88,7 +88,10 @@ class ZyteModifyRequestsMixin:
 
         self.spm_headers = spm_options.get('headers', DEFAULT_HEADERS)
 
-        self.spm_session_id = self.create_spm_session()
+        session_id = self.spm_headers.get('X-Crawlera-Session', None)
+        if not session_id or session_id == 'create':
+            session_id = self.create_spm_session()
+        self.spm_session_id = session_id
 
         super_obj.__init__(*args, **kwargs)
 
@@ -142,7 +145,10 @@ class ZyteModifyRequestsMixin:
         for key, value in self.spm_headers.items():
             del request.headers[key]
             request.headers[key] = value
+
+        del request.headers['X-Crawlera-Session']
         request.headers['X-Crawlera-Session'] = self.spm_session_id
+
         request.headers['X-Crawlera-Client'] = ZYTE_SPM_SELENIUM_VERSION
 
     def zyte_response_interceptor(self, request, response):
